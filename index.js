@@ -1,5 +1,8 @@
-import Player from '@vimeo/player'
+const Player = require('@vimeo/player')
 
+const smoothscroll = require('smoothscroll-polyfill')
+
+smoothscroll.polyfill()
 
 const options = {
   byline: false,
@@ -8,16 +11,19 @@ const options = {
   title: false
 }
 
-document.querySelector('.Logo-path').addEventListener('animationend', (e) => {
-  videos()
-})
+videos()
 
-
-document.querySelectorAll('.Info-toggle').forEach((toggle) => {
+document.querySelectorAll('.js-toggle').forEach((toggle) => {
   toggle.addEventListener('click', (e) => {
     document.querySelector('.Info').classList.toggle('is-target')
+    document.documentElement.classList.toggle('is-overlaid')
     e.preventDefault()
   })
+})
+
+document.querySelector('.Intro-link').addEventListener('click', (e) => {
+  document.querySelector('#work').scrollIntoView({ behavior: 'smooth', block: 'start' })
+  e.preventDefault()
 })
 
 function videos() {
@@ -26,21 +32,18 @@ function videos() {
 
 function setupVideo(el) {
   const figure = el.querySelector('.Embed-figure')
-  const button = el.querySelector('.Embed-play')
+  const button = el.querySelector('.Embed-link')
   const player = new Player(figure, options)
 
   button.addEventListener('click', (e) => {
-    player.play()
     el.classList.add('is-playing')
     e.preventDefault()
+    player.play()
   })
 
   player.ready().then(() => {
     el.querySelector('iframe').classList.add('Embed-iframe')
     el.classList.add('is-ready')
-    player.setCurrentTime(0.05).then(() => {
-      player.pause()
-    })
   })
 
   player.on('pause', (data) => {

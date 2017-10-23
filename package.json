@@ -1,12 +1,12 @@
 {
   "name": "maceo",
   "version": "1.0.0",
-  "description": "Video portfolio for our friend Maceo Frost",
+  "description": "Public website for the Swedish film director Maceo Frost.",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "postcss ./index.css -o ./dist/index.css",
-    "build:js": "browserify ./index.js -o ./dist/index.js -t [ babelify --presets [ env ] ]",
+    "build:css": "postcss index.css -o dist/index.css",
+    "build:js": "browserify index.js -t [ babelify --presets [ env ] ] -g uglifyify | uglifyjs -o dist/index.js",
     "build": "npm run build:css | npm run build:js",
     "dev": "serve -p 3000 | watch -p index.css -p index.js -c 'npm run build'"
   },
@@ -22,7 +22,8 @@
   "homepage": "https://github.com/codeandconspire/maceo#readme",
   "dependencies": {
     "@vimeo/player": "^2.2.0",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "smoothscroll-polyfill": "^0.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
@@ -36,6 +37,8 @@
     "postcss-custom-properties": "^6.1.0",
     "postcss-import": "^11.0.0",
     "serve": "^6.1.0",
+    "uglify-js": "^3.1.4",
+    "uglifyify": "^4.0.4",
     "watch-cli": "^0.2.2"
   }
 }
