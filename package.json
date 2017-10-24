@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codeandconspire/maceo.git"
+    "url": "git+https://github.com/antontrollback/maceo.git"
   },
-  "author": "code&conspire",
+  "author": "Anton Trollbäck",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codeandconspire/maceo/issues"
+    "url": "https://github.com/antontrollback/maceo/issues"
   },
-  "homepage": "https://github.com/codeandconspire/maceo#readme",
+  "homepage": "https://github.com/antontrollback/maceo#readme",
   "dependencies": {
     "@vimeo/player": "^2.2.0",
     "normalize.css": "^7.0.0",

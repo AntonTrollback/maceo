@@ -11,7 +11,9 @@ const options = {
   title: false
 }
 
-videos()
+document.querySelector('.Logo-path').addEventListener('animationend', (e) => {
+  videos()
+})
 
 document.querySelectorAll('.js-toggle').forEach((toggle) => {
   toggle.addEventListener('click', (e) => {
@@ -30,12 +32,18 @@ function videos() {
   document.querySelectorAll('.Embed').forEach(setupVideo)
 }
 
+let players = [];
+
 function setupVideo(el) {
   const figure = el.querySelector('.Embed-figure')
   const button = el.querySelector('.Embed-link')
   const player = new Player(figure, options)
+  players.push({ player: player, el: el });
 
   button.addEventListener('click', (e) => {
+    players.forEach((obj) => {
+      obj.el.classList.remove('is-playing')
+    })
     el.classList.add('is-playing')
     e.preventDefault()
     player.play()
@@ -46,9 +54,11 @@ function setupVideo(el) {
     el.classList.add('is-ready')
   })
 
-  player.on('pause', (data) => {
-    el.classList.remove('is-playing')
-  })
+  // player.on('play', (data) => {
+  //   players.forEach((obj) => {
+  //     obj.element.classList.remove('is-playing')
+  //   })
+  // })
 
   player.on('ended', (data) => {
     el.classList.add('is-notAnimated')

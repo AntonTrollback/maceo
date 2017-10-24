@@ -1,4 +1,4 @@
-/*! Source code: github.com/codeandconspire/maceo */
+/*! Source code: github.com/antontrollback/maceo */
 
 @import "normalize.css";
 
@@ -15,6 +15,7 @@
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 
   cursor: default;
   background: #000;
@@ -46,6 +47,7 @@ a, button {
 
 .Grid {
   overflow: hidden;
+  margin: 0 -2px 0;
 }
 
 .Item {
@@ -53,13 +55,13 @@ a, button {
   width: 100%;
   overflow: hidden;
   float: left;
-  outline: 4px solid #000;
+  border: 2px solid #000;
   user-select: none;
 }
 
 @media (min-width: 880px) {
   .Item {
-    width: 50%;
+    width: calc(50% - 4px);
   }
 }
 
@@ -226,7 +228,7 @@ a, button {
   user-select: none;
   position: relative;
   overflow: hidden;
-  outline: 4px solid #000;
+  border-bottom: 2px solid #000;
   z-index: 1;
 }
 
@@ -244,11 +246,11 @@ a, button {
 }
 
 .Intro-link {
-  position: fixed;
+  position: absolute;
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 1;
   color: inherit;
   font-size: 14px;
   letter-spacing: 1.2px;
@@ -271,7 +273,7 @@ a, button {
 }
 
 .Intro-link:hover span {
-  background: #fff;
+  background: rgba(255, 0, 30, 0.92);
   color: #000;
 }
 
@@ -279,12 +281,11 @@ a, button {
   display: none;
 }
 
-@media (min-width: 880px) {
-  .Intro-link {
-    left: 5vw;
-    transform: none;
-    margin: -12px -15px;
-  }
+.Intro-arrow {
+  fill: white;
+  width: 19px;
+  display: block;
+  margin: 12px auto -20px;
 }
 
 /**
@@ -328,12 +329,18 @@ a, button {
 }
 
 .Info-toggle:hover span {
-  background: #fff;
+  background: rgba(255, 0, 30, 0.97);
   color: #000;
 }
 
 .Info-toggle--close {
   display: none;
+  color: #000;
+}
+
+.Info-toggle--close:hover span {
+  background: #fff;
+  color: #000;
 }
 
 @media (min-width: 880px) {
@@ -487,57 +494,5 @@ a, button {
 @keyframes Logo-path--draw {
   to {
     stroke-dashoffset: 0;
-  }
-}
-
-/**
- * Footer
- * -----------------------------------------------------------------------------
- */
-
-.Footer {
-
-}
-
-.Footer-link {
-  position: fixed;
-  bottom: 50px;
-  right: 5vw;
-  z-index: 3;
-  color: inherit;
-  font-size: 14px;
-  letter-spacing: 1.2px;
-
-  box-sizing: border-box;
-  min-width: 82px;
-  padding: 12px 15px;
-  margin: -12px -15px;
-
-  text-decoration: none;
-  text-transform: uppercase;
-  text-align: center;
-  user-select: none;
-
-  cursor: default;
-
-  display: none;
-}
-
-.Footer-link span {
-  padding-left: 1.2px;
-}
-
-.Footer-link:hover span {
-  background: #fff;
-  color: #000;
-}
-
-:root.is-overlaid .Footer-link {
-  display: none;
-}
-
-@media (min-width: 880px) {
-  .Footer-link {
-    display: block;
   }
 }
