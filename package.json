@@ -36,7 +36,7 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-custom-properties": "^6.1.0",
     "postcss-import": "^11.0.0",
-    "serve": "^6.1.0",
+    "serve": "^10.1.2",
     "uglify-js": "^3.1.4",
     "uglifyify": "^4.0.4",
     "watch-cli": "^0.2.2"
